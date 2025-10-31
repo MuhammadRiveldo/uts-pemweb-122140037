@@ -1,0 +1,83 @@
+.dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+    color: white;
+    min-height: 90vh;
+    padding: 40px 80px;
+    text-align: left;
+  }
+  
+  .dashboard-content {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .dashboard-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+  
+  .dashboard-content button {
+    background-color: #ffeb3b;
+    color: #3f51b5;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-content button:hover {
+    background-color: #fff176;
+  }
+  
+  .dashboard-image {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .dashboard-image img {
+    width: 300px;
+    max-width: 90%;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard {
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 20px;
+    }
+  
+    .dashboard-content h1 {
+      font-size: 2.2rem;
+    }
+  
+    .dashboard-image img {
+      width: 220px;
+      margin-top: 20px;
+    }
+  }
+  
