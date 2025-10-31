@@ -14,7 +14,9 @@ function App() {
     return JSON.parse(localStorage.getItem("playlist")) || [];
   });
   const [showDashboard, setShowDashboard] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
+  // Fungsi pencarian musik
   const searchMusic = async (keyword, mediaType, sortBy) => {
     const res = await fetch(
       `https://itunes.apple.com/search?term=${keyword}&media=${mediaType}&limit=20`
@@ -34,6 +36,7 @@ function App() {
     setShowDashboard(false);
   };
 
+  // Playlist management
   const addToPlaylist = (track) => {
     if (!playlist.find((item) => item.trackId === track.trackId)) {
       setPlaylist([...playlist, track]);
@@ -48,17 +51,30 @@ function App() {
     localStorage.setItem("playlist", JSON.stringify(playlist));
   }, [playlist]);
 
-  const handleStart = () => {
-    document.getElementById("search-section").scrollIntoView({ behavior: "smooth" });
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
   };
 
   return (
-    <div className="App">
-      <Header />
-      {showDashboard && <Dashboard onStart={handleStart} />}
+    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
+      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-      <div id="search-section">
+      {/* Form pencarian di bagian paling atas */}
+      <div className="fade-slide">
         <SearchForm onSearch={searchMusic} />
+      </div>
+
+      {/* Dashboard muncul hanya jika belum mencari */}
+      {showDashboard && (
+        <div className="fade-in">
+          <Dashboard />
+        </div>
+      )}
+
+      {/* Playlist dan hasil pencarian */}
+      <div className="fade-slide">
+        <Playlist playlist={playlist} onRemove={removeFromPlaylist} />
+
         {results.length > 0 && (
           <>
             <DataTable
@@ -69,7 +85,6 @@ function App() {
             {selected && <DetailCard track={selected} />}
           </>
         )}
-        <Playlist playlist={playlist} onRemove={removeFromPlaylist} />
       </div>
     </div>
   );

@@ -1,10 +1,13 @@
-import React from 'react';
+import React from "react";
+import "./Header.css";
 
-export default function Header() {
+export default function Header({ darkMode, toggleDarkMode }) {
   return (
-    <header className="app-header">
-      <h1>🎵 Music Explorer</h1>
-      <p>Cari musik, album, dan artist favoritmu!</p>
+    <header className="header">
+      <h2>🎵 Music Explorer</h2>
+      <button className="dark-toggle" onClick={toggleDarkMode}>
+        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+      </button>
     </header>
   );
 }

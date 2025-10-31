@@ -91,6 +91,89 @@ body {
   border-radius: 8px;
 }
 
+.App {
+  background-color: #f5f7ff;
+  min-height: 100vh;
+  color: #333;
+  transition: all 0.4s ease;
+}
+
+/* 🌙 Dark Mode */
+.App.dark-mode {
+  background-color: #1b1b1b;
+  color: #f5f5f5;
+}
+
+.App.dark-mode .header {
+  background-color: #2c2c2c;
+}
+
+.App.dark-mode button,
+.App.dark-mode .dark-toggle {
+  background-color: #333;
+  color: #fff;
+}
+
+.App.dark-mode .playlist {
+  background-color: #2a2a2a;
+}
+
+.App.dark-mode .dashboard {
+  background: linear-gradient(135deg, #212121, #333);
+}
+.App {
+  background-color: #f5f7ff;
+  min-height: 100vh;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* 🌙 Dark Mode */
+.App.dark-mode {
+  background-color: #1b1b1b;
+  color: #f5f5f5;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.fade-slide {
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🌙 Transition untuk mode gelap */
+.App,
+button,
+input,
+select {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
 @media (max-width: 768px) {
   .result-table, .playlist {
     width: 100%;
