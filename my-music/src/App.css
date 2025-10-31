@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4ff;
+}
+
+.app-header {
+  background: #3f51b5;
+  color: white;
+  padding: 20px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px auto;
+}
+
+.search-form input,
+.search-form select,
+.search-form button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.search-form button {
+  background-color: #3f51b5;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.result-table {
+  width: 95%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.result-table th, .result-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.result-table img {
+  width: 60px;
+  border-radius: 5px;
+}
+
+.detail-card {
+  margin: 30px auto;
+  max-width: 400px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.playlist {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.playlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #eef;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.playlist-item img {
+  width: 60px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .result-table, .playlist {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+}
