@@ -282,3 +282,67 @@ select {
     flex-direction: column;
   }
 }
+
+/* === 🎵 Overlay Playlist Popup === */
+.playlist-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 999;
+}
+
+.playlist-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.playlist-popup {
+  background: #ffffff;
+  color: #222;
+  border-radius: 20px;
+  padding: 30px;
+  width: 85%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transform: translateY(-30px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.playlist-overlay.show .playlist-popup {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Tombol close di pojok kanan */
+.close-btn {
+  float: right;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  background: #d32f2f;
+  transform: rotate(90deg);
+}
+
+/* Untuk dark mode popup */
+.App.dark-mode .playlist-popup {
+  background: #222;
+  color: #f5f5f5;
+}
