@@ -166,6 +166,75 @@ body {
   }
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #4a56e2;
+  color: white;
+  border-radius: 0 0 25px 25px;
+}
+
+.header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-playlist-toggle {
+  background: #ffeb3b;
+  border: none;
+  color: #222;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-playlist-toggle:hover {
+  background: #fff176;
+  transform: translateY(-2px);
+}
+
+.btn-darkmode {
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-darkmode:hover {
+  background: #333;
+}
+
+.playlist-container {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.6s ease;
+}
+
+.playlist-container.show {
+  max-height: 2000px; /* cukup besar agar muat semua item */
+  opacity: 1;
+  margin-top: 20px;
+}
+
+.playlist-container.hide {
+  opacity: 0;
+  max-height: 0;
+}
+
 /* 🌙 Transition untuk mode gelap */
 .App,
 button,

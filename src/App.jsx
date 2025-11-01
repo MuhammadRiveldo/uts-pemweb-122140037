@@ -4,7 +4,6 @@ import SearchForm from "./components/SearchForm";
 import DataTable from "./components/DataTable";
 import DetailCard from "./components/DetailCard";
 import Playlist from "./components/Playlist";
-import Dashboard from "./components/Dashboard";
 import "./App.css";
 
 function App() {
@@ -13,10 +12,9 @@ function App() {
   const [playlist, setPlaylist] = useState(() => {
     return JSON.parse(localStorage.getItem("playlist")) || [];
   });
-  const [showDashboard, setShowDashboard] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
+  const [showPlaylist, setShowPlaylist] = useState(false);
 
-  // Fungsi pencarian musik
   const searchMusic = async (keyword, mediaType, sortBy) => {
     const res = await fetch(
       `https://itunes.apple.com/search?term=${keyword}&media=${mediaType}&limit=20`
@@ -33,10 +31,8 @@ function App() {
     });
 
     setResults(sorted);
-    setShowDashboard(false);
   };
 
-  // Playlist management
   const addToPlaylist = (track) => {
     if (!playlist.find((item) => item.trackId === track.trackId)) {
       setPlaylist([...playlist, track]);
@@ -51,41 +47,29 @@ function App() {
     localStorage.setItem("playlist", JSON.stringify(playlist));
   }, [playlist]);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  const toggleDarkMode = () => setDarkMode(!darkMode);
+  const togglePlaylist = () => setShowPlaylist(!showPlaylist);
 
   return (
     <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Header
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        togglePlaylist={togglePlaylist}
+      />
+      <SearchForm onSearch={searchMusic} />
 
-      {/* Form pencarian di bagian paling atas */}
-      <div className="fade-slide">
-        <SearchForm onSearch={searchMusic} />
-      </div>
-
-      {/* Dashboard muncul hanya jika belum mencari */}
-      {showDashboard && (
-        <div className="fade-in">
-          <Dashboard />
-        </div>
-      )}
-
-      {/* Playlist dan hasil pencarian */}
-      <div className="fade-slide">
+      {/* Transisi munculnya playlist */}
+      <div className={`playlist-container ${showPlaylist ? "show" : "hide"}`}>
         <Playlist playlist={playlist} onRemove={removeFromPlaylist} />
-
-        {results.length > 0 && (
-          <>
-            <DataTable
-              results={results}
-              onSelect={setSelected}
-              onAdd={addToPlaylist}
-            />
-            {selected && <DetailCard track={selected} />}
-          </>
-        )}
       </div>
+
+      {results.length > 0 && (
+        <>
+          <DataTable results={results} onSelect={setSelected} onAdd={addToPlaylist} />
+          {selected && <DetailCard track={selected} />}
+        </>
+      )}
     </div>
   );
 }
