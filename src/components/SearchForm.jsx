@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export default function SearchForm({ onSearch }) {
-  const [keyword, setKeyword] = useState('');
-  const [media, setMedia] = useState('music');
-  const [sort, setSort] = useState('releaseDate');
+  const [keyword, setKeyword] = useState("");
+  const [media, setMedia] = useState("music");
+  const [sort, setSort] = useState("releaseDate");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(keyword, media, sort);
+
+    // ✅ Pastikan fungsi onSearch dikirim
+    if (typeof onSearch === "function") {
+      onSearch(keyword.trim(), media, sort);
+    } else {
+      console.warn("⚠️ Fungsi onSearch belum dikirim dari App.jsx");
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="search-form">
       <input
         type="text"
-        placeholder="Masukkan nama lagu atau artist..."
+        placeholder="Masukkan nama lagu atau artis..."
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
         required
       />
+
       <select value={media} onChange={(e) => setMedia(e.target.value)}>
         <option value="music">Music</option>
         <option value="movie">Movie</option>
