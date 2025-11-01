@@ -1,0 +1,21 @@
+.category-card {
+    padding: 25px;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    width: 220px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  }
+  
+  .category-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
