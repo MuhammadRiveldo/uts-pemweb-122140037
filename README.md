@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# 🎧 Music Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Nama: Muhammad Riveldo Hermawan Putra
+NIM: 122140037
 
-## Available Scripts
+Deskripsi:
+Music Explorer adalah aplikasi berbasis web yang memungkinkan pengguna untuk mencari, mendengarkan preview lagu, dan membuat playlist pribadi menggunakan data dari iTunes API.
+Aplikasi ini memiliki tampilan modern, fitur dark mode, serta sistem penyimpanan lokal (localStorage) agar data playlist tetap tersimpan meskipun halaman direfresh.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🧠 Teknologi yang Digunakan
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js Framework utama untuk pengembangan UI
+- React Hooks (useState, useEffect, useRef)	Manajemen state dan efek samping
+- Fetch API	Mengambil data dari iTunes API
+- LocalStorage Menyimpan data playlist secara lokal
+- React Toastify Menampilkan notifikasi
+- CSS3 / Flexbox Styling responsif dan animasi halus
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ⚙️ Instruksi Instalasi dan Menjalankan
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone repository**  
+   ```bash
+   git clone https://github.com/MuhammadRiveldo/uts-pemweb-122140037.git
 
-### `npm run build`
+2. **Install dependencies**  
+   ```bash
+   npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Menjalankan aplikasi react**  
+   ```bash
+   npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   Aplikasi akan berjalan di http://localhost:3000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Build untuk Production**  
+   ```bash
+   npm run build
 
-### `npm run eject`
+---
+## 📸 Struktur Folder
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+src/
+├── components/
+│   ├── Header.jsx
+│   ├── SearchForm.jsx
+│   ├── DataTable.jsx
+│   ├── DetailCard.jsx
+│   ├── Playlist.jsx
+│   ├── HeroSection.jsx
+│   └── CategoryCard.jsx
+├── App.jsx
+├── App.css
+└── index.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📸 Screenshot Antarmuka
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Berikut ini adalah tampilan dari website Music Explorer halaman Home Tema Terang:
+![Screenshot Aplikasi](./src/assets/Images/HalamanHome.png) 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Berikut ini adalah tampilan dari website Music Explorer halaman Home Tema Gelap
+![Screenshot Aplikasi](./src/assets/Images/HalamanHome2.png)
 
-## Learn More
+Berikut ini adalah tampilan dari Hasil Pencarian:
+![Screenshot Aplikasi](./src/assets/Images/HasilPencarian.png) 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Berikut ini adalah tampilan dari Detail Musik:
+![Screenshot Aplikasi](./src/assets/Images/Detail.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Berikut ini adalah tampilan dari musik yang sudah di tambah ke MyPlaylist:
+![Screenshot Aplikasi](./src/assets/Images/MyPlaylist.png)
+---
 
-### Code Splitting
+## 🚀 Fitur Utama
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+🎵 1. Pencarian Lagu
+- Pengguna dapat mencari lagu, album, atau podcast melalui API iTunes.
+- Hasil pencarian ditampilkan dalam bentuk tabel interaktif dengan informasi seperti judul, artis, harga, dan audio preview.
 
-### Analyzing the Bundle Size
+💾 2. Playlist Pribadi
+- Lagu dapat ditambahkan ke playlist pribadi dengan tombol “+ Playlist"
+- Playlist disimpan secara otomatis di localStorage, sehingga tidak hilang saat halaman direfresh.
+- Pengguna dapat menghapus lagu dari playlist, dan sistem akan menampilkan notifikasi sukses atau error.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+🌙 3. Dark Mode
+- Fitur untuk beralih antara Light Mode dan Dark Mode.
+- Seluruh elemen UI (tabel, tombol, popup, text) beradaptasi secara dinamis terhadap mode gelap.
 
-### Making a Progressive Web App
+🔔 4. Notifikasi Interaktif
+- Menggunakan react-toastify untuk menampilkan notifikasi real-time seperti:
+- ✅ Lagu berhasil ditambahkan ke playlist
+- ⚠️ Lagu sudah ada di playlist
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🌐 Link Deployment
+Jika sudah dideploy:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+👉 https://uts-pemweb-122140037vercelapp.vercel.app/
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+> Dibuat oleh Muhammad Riveldo Hermawan Putra
