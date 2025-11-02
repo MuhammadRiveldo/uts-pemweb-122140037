@@ -6,6 +6,8 @@ import DetailCard from "./components/DetailCard";
 import Playlist from "./components/Playlist";
 import HeroSection from "./components/HeroSection";
 import CategoryCard from "./components/CategoryCard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
@@ -14,13 +16,7 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
   const [results, setResults] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState(null);
-  const [notification, setNotification] = useState(null);
-
-  // Fungsi menampilkan notifikasi
-  const showNotification = (message, type = "success") => {
-    setNotification({ message, type });
-    setTimeout(() => setNotification(null), 3000); // hilang otomatis
-  };
+  
 
   const searchRef = useRef(null);
 
@@ -42,16 +38,7 @@ function App() {
   const addToPlaylist = (track) => {
     if (!playlist.find((item) => item.trackId === track.trackId)) {
       setPlaylist([...playlist, track]);
-      showNotification("Lagu berhasil ditambahkan ke playlist! 🎵", "success");
-    } else {
-      showNotification("Lagu sudah ada di playlist!", "warning");
     }
-  };
-  
-  const removeFromPlaylist = (trackId) => {
-    const updated = playlist.filter((item) => item.trackId !== trackId);
-    setPlaylist(updated);
-    showNotification("Lagu dihapus dari playlist ❌", "error");
   };
   
   const handleSearch = async (keyword, media, sort) => {
@@ -124,14 +111,9 @@ function App() {
 
       {/* Detail Lagu */}
       {selectedTrack && <DetailCard track={selectedTrack} onClose={handleCloseDetail} />}
-      
-      {notification && (
-          <div className={`toast ${notification.type}`}>
-            <span>{notification.message}</span>
-          </div>
-        )}
 
       <footer className="footer">© 2025 Music Explorer by Riveldo 🎧</footer>
+      <ToastContainer />
     </div>
   );
 }

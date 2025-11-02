@@ -1,5 +1,6 @@
 import React from "react";
 import "./DataTable.css";
+import { toast } from "react-toastify"; // ✅ pastikan react-toastify sudah diinstal
 
 export default function DataTable({ results = [], onSelect, onAdd }) {
   if (!results || results.length === 0) {
@@ -9,6 +10,15 @@ export default function DataTable({ results = [], onSelect, onAdd }) {
       </div>
     );
   }
+
+  const handleAdd = (track) => {
+    onAdd?.(track);
+    toast.success(`🎵 "${track.trackName}" ditambahkan ke playlist!`, {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "colored",
+    });
+  };
 
   return (
     <div className="table-container">
@@ -38,16 +48,30 @@ export default function DataTable({ results = [], onSelect, onAdd }) {
               <td>{track.trackPrice ? `$${track.trackPrice}` : "-"}</td>
               <td>
                 {track.previewUrl ? (
-                  <audio controls src={track.previewUrl}></audio>
+                  <audio
+                    controls
+                    src={track.previewUrl}
+                    onError={(e) => {
+                      console.warn("⚠️ Gagal memuat preview:", track.trackName);
+                      e.target.style.display = "none"; // sembunyikan jika error
+                    }}
+                    onAbort={() => console.log("🔇 Preview dibatalkan.")}
+                  />
                 ) : (
                   <span>-</span>
                 )}
               </td>
               <td>
-                <button className="btn-detail" onClick={() => onSelect?.(track)}>
+                <button
+                  className="btn-detail"
+                  onClick={() => onSelect?.(track)}
+                >
                   Detail
                 </button>
-                <button className="btn-add" onClick={() => onAdd?.(track)}>
+                <button
+                  className="btn-add"
+                  onClick={() => handleAdd(track)}
+                >
                   + Playlist
                 </button>
               </td>
