@@ -41,20 +41,6 @@ Aplikasi ini memiliki tampilan modern, fitur dark mode, serta sistem penyimpanan
    npm run build
 
 ---
-## 📸 Struktur Folder
-
-src/
-├── components/
-│   ├── Header.jsx
-│   ├── SearchForm.jsx
-│   ├── DataTable.jsx
-│   ├── DetailCard.jsx
-│   ├── Playlist.jsx
-│   ├── HeroSection.jsx
-│   └── CategoryCard.jsx
-├── App.jsx
-├── App.css
-└── index.js
 
 ## 📸 Screenshot Antarmuka
 
@@ -102,4 +88,4 @@ Jika sudah dideploy:
 👉 https://uts-pemweb-122140037vercelapp.vercel.app/
 
 ---
-> Dibuat oleh Muhammad Riveldo Hermawan Putra
+> Dibuat oleh Muhammad Riveldo Hermawan Putra (122140037)
