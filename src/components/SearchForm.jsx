@@ -28,7 +28,6 @@ export default function SearchForm({ onSearch }) {
 
       <select value={media} onChange={(e) => setMedia(e.target.value)}>
         <option value="music">Music</option>
-        <option value="movie">Movie</option>
         <option value="podcast">Podcast</option>
       </select>
 

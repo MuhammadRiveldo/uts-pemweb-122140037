@@ -14,6 +14,14 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
   const [results, setResults] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState(null);
+  const [notification, setNotification] = useState(null);
+
+  // Fungsi menampilkan notifikasi
+  const showNotification = (message, type = "success") => {
+    setNotification({ message, type });
+    setTimeout(() => setNotification(null), 3000); // hilang otomatis
+  };
+
   const searchRef = useRef(null);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
@@ -34,9 +42,18 @@ function App() {
   const addToPlaylist = (track) => {
     if (!playlist.find((item) => item.trackId === track.trackId)) {
       setPlaylist([...playlist, track]);
+      showNotification("Lagu berhasil ditambahkan ke playlist! 🎵", "success");
+    } else {
+      showNotification("Lagu sudah ada di playlist!", "warning");
     }
   };
-
+  
+  const removeFromPlaylist = (trackId) => {
+    const updated = playlist.filter((item) => item.trackId !== trackId);
+    setPlaylist(updated);
+    showNotification("Lagu dihapus dari playlist ❌", "error");
+  };
+  
   const handleSearch = async (keyword, media, sort) => {
     if (!keyword.trim()) return;
     const url = `https://itunes.apple.com/search?term=${encodeURIComponent(keyword)}&media=${media}&limit=20`;
@@ -77,7 +94,6 @@ function App() {
         <CategoryCard icon="🎵" title="Music" description="Temukan lagu favoritmu" color="#7986cb" />
         <CategoryCard icon="💿" title="Album" description="Jelajahi album keren" color="#9575cd" />
         <CategoryCard icon="🎙️" title="Podcast" description="Dengarkan podcast inspiratif" color="#ba68c8" />
-        <CategoryCard icon="🎬" title="Movie" description="Soundtrack film populer" color="#64b5f6" />
       </div>
 
       {/* 🔍 Pencarian */}
@@ -92,7 +108,7 @@ function App() {
           <DataTable results={results} onSelect={setSelectedTrack} onAdd={addToPlaylist} />
         </div>
       )}
-
+      
       {/* 🎵 Overlay Playlist */}
       <div className={`playlist-overlay ${showPlaylist ? "show" : ""}`}>
         <div className="playlist-popup">
@@ -108,6 +124,12 @@ function App() {
 
       {/* Detail Lagu */}
       {selectedTrack && <DetailCard track={selectedTrack} onClose={handleCloseDetail} />}
+      
+      {notification && (
+          <div className={`toast ${notification.type}`}>
+            <span>{notification.message}</span>
+          </div>
+        )}
 
       <footer className="footer">© 2025 Music Explorer by Riveldo 🎧</footer>
     </div>
